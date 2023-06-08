@@ -1,0 +1,121 @@
+<section class="hero" style="background-color: black;">
+  <div class="hero-body">
+    <div class="container has-text-centered" style="max-width: 2000px;">
+      <p class="video-sec-title" style="text-align: left;">Super Responsive Image Slider</p>
+      <div class="slider-container">
+        <div class="slider-track">
+          <div class="slide">
+            <img class="slide-image" src="https://images.unsplash.com/photo-1555661225-ade1bbf3fbb3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1957&q=80" alt="">
+            <div class="slide-info">
+              <p class="slide-title">Image 1</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img class="slide-image" src="https://images.unsplash.com/photo-1566075247408-2fc9e74810d2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="">
+            <div class="slide-info">
+              <p class="slide-title">Image 2</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img class="slide-image" src="https://images.unsplash.com/photo-1559083991-9bdef0bb5a39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1955&q=80" alt="">
+            <div class="slide-info">
+              <p class="slide-title">Image 3</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img class="slide-image" src="https://images.unsplash.com/photo-1560800589-3d88290dd749?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1955&q=80" alt="">
+            <div class="slide-info">
+              <p class="slide-title">Image 4</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img class="slide-image" src="https://images.unsplash.com/photo-1560716092-203a1703e06e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1955&q=80" alt="">
+            <div class="slide-info">
+              <p class="slide-title">Image 5</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-nav">
+        <button id="prevBtn">Prev</button>
+        <button id="nextBtn">Next</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.slider-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+.slide {
+  flex: 0 0 100%;
+  padding: 1rem;
+  text-align: center;
+}
+
+.slide-image {
+  width: 100%;
+  height: auto;
+}
+
+.slide-info {
+  margin-top: 1rem;
+}
+
+.slide-title {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.slider-nav {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+#prevBtn,
+#nextBtn {
+  margin: 0 0.5rem;
+}
+</style>
+
+<script>
+var sliderTrack = document.querySelector('.slider-track');
+var slides = document.querySelectorAll('.slide');
+var slideWidth = slides[0].offsetWidth;
+var currentIndex = 0;
+
+function slideToIndex(index) {
+  currentIndex = index;
+  var translateXValue = -slideWidth * currentIndex;
+  sliderTrack.style.transform = 'translateX(' + translateXValue + 'px)';
+}
+
+function slideNext() {
+  if (currentIndex < slides.length - 1) {
+    currentIndex++;
+    slideToIndex(currentIndex);
+  }
+}
+
+function slidePrev() {
+  if (currentIndex > 0) {
+    currentIndex--;
+    slideToIndex(currentIndex);
+  }
+}
+
+var prevBtn = document.getElementById('prevBtn');
+var nextBtn = document.getElementById('nextBtn');
+
+nextBtn.addEventListener('click', slideNext);
+prevBtn.addEventListener('click', slidePrev);
+</script>
